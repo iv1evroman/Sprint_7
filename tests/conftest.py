@@ -1,7 +1,7 @@
 import pytest
 from methods.order_methods import OrderMethods
 from methods.couriers_methods import CourierMethods
-from helpers import Helpers
+
 
 @pytest.fixture()
 def order_methods():
@@ -11,7 +11,6 @@ def order_methods():
 @pytest.fixture()
 def courier_methods():
     return CourierMethods()
-
 
 
 @pytest.fixture()

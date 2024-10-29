@@ -2,6 +2,7 @@ from helpers import Helpers
 BASE_URL = 'https://qa-scooter.praktikum-services.ru/api/v1/'
 ORDERS_URL = 'orders/'
 COURIERS_URL = 'courier/'
+LOGIN_URL = 'login/'
 COURIER_PASSWORD = '1234'
 COURIER_NAME = 'Иван'
 

@@ -1,7 +1,7 @@
 import requests
 import random
 import string
-from data import BASE_URL, COURIERS_URL
+from data import BASE_URL, COURIERS_URL, LOGIN_URL
 
 
 class CourierMethods:
@@ -57,7 +57,7 @@ class CourierMethods:
         "login": login,
         "password": password
     }
-        response = requests.post(f'{BASE_URL}{COURIERS_URL}', data=payload)
+        response = requests.post(f'{BASE_URL}{COURIERS_URL}{LOGIN_URL}', data=payload)
         return response.status_code, response.json()
 
     def delete_courier(self, id):
