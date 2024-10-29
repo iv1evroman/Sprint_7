@@ -2,9 +2,11 @@ import requests
 import random
 import string
 from data import BASE_URL, COURIERS_URL, LOGIN_URL
+import allure
 
 
 class CourierMethods:
+    @allure.step('создаем нового курьера')
     def create_new_courier(self, login, password, first_name):
         payload = {
             "login": login,
@@ -14,10 +16,8 @@ class CourierMethods:
         response = requests.post(f'{BASE_URL}{COURIERS_URL}', data=payload)
         return response.status_code, response.json()
 
-
-
-    # метод регистрации нового курьера возвращает список из логина и пароля
-    # если регистрация не удалась, возвращает пустой список
+    @allure.step('метод регистрации нового курьера возвращает список из логина и пароля '
+                 'если регистрация не удалась, возвращает пустой список')
     def register_new_courier_and_return_login_password(self):
         # метод генерирует строку, состоящую только из букв нижнего регистра, в качестве параметра передаём длину строки
         def generate_random_string(length):
@@ -52,6 +52,7 @@ class CourierMethods:
         # возвращаем список
         return login_pass
 
+    @allure.step('Авторизуем курьера')
     def login_courier(self, login, password):
         payload = {
         "login": login,
@@ -60,6 +61,7 @@ class CourierMethods:
         response = requests.post(f'{BASE_URL}{COURIERS_URL}{LOGIN_URL}', data=payload)
         return response.status_code, response.json()
 
+    @allure.step('Удаляем курьера')
     def delete_courier(self, id):
         response = requests.delete(f'{BASE_URL}{COURIERS_URL}{id}')
         return response.status_code, response.json()
